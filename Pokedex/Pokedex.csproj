@@ -56,6 +56,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Converters\PokemonTypeToColorConverter.cs" />
+    <Compile Include="Converters\SelectedPokemonToDetailsVisibilityConverter.cs" />
     <Compile Include="Data\Dictionaries\PokemonTypes.cs" />
     <Compile Include="Models\Pokemon.cs" />
     <Compile Include="Utils\BindableBase.cs" />

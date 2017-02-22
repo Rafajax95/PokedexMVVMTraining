@@ -14,7 +14,7 @@
     </UserControl.DataContext>
     <UserControl.Resources>
         <Converters:PokemonTypeToColorConverter x:Key="ColorConv"></Converters:PokemonTypeToColorConverter>
-        
+        <Converters:SelectedPokemonToDetailsVisibilityConverter x:Key="DetailsVisConv"></Converters:SelectedPokemonToDetailsVisibilityConverter>
         
         <DataTemplate x:Key="pokemonView">
             <Grid Width="150"
@@ -31,9 +31,9 @@
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="4*"/>
+            <RowDefinition Height="3*"/>
             <RowDefinition Height="162"/>
-            <RowDefinition Height="14*"/>
+            <RowDefinition Height="10*"/>
             <RowDefinition Height="228"/>
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
@@ -62,6 +62,9 @@
                     </ItemsPanelTemplate>
                 </ListBox.ItemsPanel>
             </ListBox>
+        </Border>
+        <Border Visibility="{Binding SelectedPokemon, Converter={StaticResource DetailsVisConv}}" Grid.Row="3" Grid.Column="1" BorderBrush="#FF211F1F" BorderThickness="1" CornerRadius="2" >
+            <Label>ddsaasdad</Label>
         </Border>
     </Grid>
 </UserControl>
