@@ -1,0 +1,67 @@
+﻿<UserControl x:Class="Pokedex.Views.PokemonListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Pokedex.Views"
+             xmlns:ViewModels="clr-namespace:Pokedex.ViewModels"
+             xmlns:Converters="clr-namespace:Pokedex.Converters"
+
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="1000">
+    <UserControl.DataContext>
+        <ViewModels:PokemonListViewModel></ViewModels:PokemonListViewModel>
+    </UserControl.DataContext>
+    <UserControl.Resources>
+        <Converters:PokemonTypeToColorConverter x:Key="ColorConv"></Converters:PokemonTypeToColorConverter>
+        
+        
+        <DataTemplate x:Key="pokemonView">
+            <Grid Width="150"
+                Background="{Binding Type, Converter={StaticResource ColorConv}}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Image Margin="10" Grid.Row="0" Width="80" Height="80"></Image>
+                <Label FontFamily="Tahoma" Grid.Row="1" HorizontalAlignment="Center" Content="{Binding Name}" FontWeight="Bold"/>
+            </Grid>
+        </DataTemplate>
+
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="162"/>
+            <RowDefinition Height="14*"/>
+            <RowDefinition Height="228"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="30"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Row="1" Grid.Column="1" BorderBrush="#FF211F1F" BorderThickness="1" CornerRadius="2" >
+            <ListBox x:Name="pokemonLB"
+                     Background="{x:Null}"
+                     ScrollViewer.CanContentScroll="False"
+                     BorderThickness="0"
+                     ItemsSource="{Binding Pokemons}"
+                     ItemTemplate="{StaticResource pokemonView}"
+                     SelectedItem="{Binding SelectedPokemon, Mode=TwoWay}"
+                     ItemContainerStyle="{DynamicResource PokemonListBoxItemStyle}">
+
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Center">
+                        </StackPanel>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+            </ListBox>
+        </Border>
+    </Grid>
+</UserControl>
