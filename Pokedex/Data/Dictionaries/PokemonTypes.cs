@@ -2,7 +2,7 @@
 {
 	public enum PokemonType
 	{
-		Fire,
+		Fire = 1,
 		Grass,
 		Water,
 		Electric,

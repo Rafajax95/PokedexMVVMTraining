@@ -35,8 +35,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -57,7 +68,33 @@
     </ApplicationDefinition>
     <Compile Include="Converters\PokemonTypeToColorConverter.cs" />
     <Compile Include="Converters\SelectedPokemonToDetailsVisibilityConverter.cs" />
+    <Compile Include="Data\Database\PokedexDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PokedexDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Database\PokedexDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PokedexDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Database\PokedexDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PokedexDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Database\PokemonPictures.cs">
+      <DependentUpon>PokedexDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Database\Pokemons.cs">
+      <DependentUpon>PokedexDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Database\PokemonTypes.cs">
+      <DependentUpon>PokedexDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\Dictionaries\PokemonTypes.cs" />
+    <Compile Include="Services\DataService.cs" />
+    <Compile Include="Mappers\DatabasePokemon2ModelPokemon.cs" />
     <Compile Include="Models\Pokemon.cs" />
     <Compile Include="Utils\BindableBase.cs" />
     <Compile Include="ViewModels\PokemonListViewModel.cs" />
@@ -99,6 +136,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="Data\Database\PokedexDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PokedexDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Data\Database\PokedexDB.edmx.diagram">
+      <DependentUpon>PokedexDB.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -108,7 +153,22 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Content Include="Data\Database\PokedexDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PokedexDB.edmx</DependentUpon>
+      <LastGenOutput>PokedexDB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Data\Database\PokedexDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PokedexDB.edmx</DependentUpon>
+      <LastGenOutput>PokedexDB.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

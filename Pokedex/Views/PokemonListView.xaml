@@ -15,15 +15,15 @@
     <UserControl.Resources>
         <Converters:PokemonTypeToColorConverter x:Key="ColorConv"></Converters:PokemonTypeToColorConverter>
         <Converters:SelectedPokemonToDetailsVisibilityConverter x:Key="DetailsVisConv"></Converters:SelectedPokemonToDetailsVisibilityConverter>
-        
+
         <DataTemplate x:Key="pokemonView">
             <Grid Width="150"
                 Background="{Binding Type, Converter={StaticResource ColorConv}}">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="110"/>
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
-                <Image Margin="10" Grid.Row="0" Width="80" Height="80"></Image>
+                <Image Source="{Binding Image}" Margin="5,5,5,5" Grid.Row="0" Width="100" Height="100" VerticalAlignment="Top"></Image>
                 <Label FontFamily="Tahoma" Grid.Row="1" HorizontalAlignment="Center" Content="{Binding Name}" FontWeight="Bold"/>
             </Grid>
         </DataTemplate>
@@ -32,7 +32,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="3*"/>
-            <RowDefinition Height="162"/>
+            <RowDefinition Height="164"/>
             <RowDefinition Height="10*"/>
             <RowDefinition Height="228"/>
             <RowDefinition Height="3*"/>

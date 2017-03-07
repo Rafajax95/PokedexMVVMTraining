@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using Pokedex.Utils;
 using Pokedex.Models;
-
+using Pokedex.Services;
+using System.Windows.Media.Imaging;
 
 namespace Pokedex.ViewModels
 {
@@ -45,17 +46,19 @@ namespace Pokedex.ViewModels
 
 		public PokemonListViewModel()
 		{
-			Pokemons = new ObservableCollection<Pokemon>()
-			{
-				new Pokemon("Pika",100,Data.Dictionaries.PokemonType.Electric),
-				new Pokemon("Bulba",102,Data.Dictionaries.PokemonType.Grass),
-				new Pokemon("Czarma",123,Data.Dictionaries.PokemonType.Fire),
-				new Pokemon("Squirle",104,Data.Dictionaries.PokemonType.Water),
-				new Pokemon("Caterprie",78,Data.Dictionaries.PokemonType.Grass),
-				new Pokemon("Growlith",24,Data.Dictionaries.PokemonType.Fire),
-				new Pokemon("Tentakoll",5,Data.Dictionaries.PokemonType.Water)
-			};
+			Pokemons = new ObservableCollection<Pokemon>(DataService.GetAllPokemons());
 		}
+
+		//public PokemonListViewModel()
+		//{
+		//	Pokemons = new ObservableCollection<Pokemon>()
+		//	{
+		//		new Pokemon("Pika",100,Data.Dictionaries.PokemonType.Electric,new BitmapImage()),
+		//		new Pokemon("Bulba",102,Data.Dictionaries.PokemonType.Grass,new BitmapImage()),
+		//		new Pokemon("Czarma",123,Data.Dictionaries.PokemonType.Fire,new BitmapImage()),
+		//		new Pokemon("Squirle",104,Data.Dictionaries.PokemonType.Water,new BitmapImage())
+		//	};
+		//}
 
 	}
 }

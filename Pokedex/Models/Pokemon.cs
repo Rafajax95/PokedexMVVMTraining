@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Pokedex.Utils;
 using Pokedex.Data.Dictionaries;
+using System.Windows.Media.Imaging;
 
 namespace Pokedex.Models
 {
@@ -13,6 +14,7 @@ namespace Pokedex.Models
 		private string name;
 		private int amountOnWorld;
 		private PokemonType type;
+		private BitmapImage image;
 
 		#region Props
 		public string Name
@@ -56,13 +58,27 @@ namespace Pokedex.Models
 				RaisePropertyChanged("Type");
 			}
 		}
+		
+		public BitmapImage Image
+		{
+			get
+			{
+				return image;
+			}
+			set
+			{
+				image = value;
+				RaisePropertyChanged("Image");
+			}
+		}
 		#endregion
 
-		public Pokemon(string name, int amountOnWorld, PokemonType type)
+		public Pokemon(string name, int amountOnWorld, PokemonType type, BitmapImage image)
 		{
 			Name = name;
 			AmountOnWorld = amountOnWorld;
 			Type = type;
+			Image = image;
 		}
 	}
 
