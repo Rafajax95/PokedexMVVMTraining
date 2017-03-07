@@ -64,7 +64,15 @@
             </ListBox>
         </Border>
         <Border Visibility="{Binding SelectedPokemon, Converter={StaticResource DetailsVisConv}}" Grid.Row="3" Grid.Column="1" BorderBrush="#FF211F1F" BorderThickness="1" CornerRadius="2" >
-            <Label>ddsaasdad</Label>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="230"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0" BorderThickness="1" CornerRadius="1"  Margin="0,0,0,0"  Width="200" Height="200" BorderBrush="#FF211F1F">
+                    <Image Source="{Binding SelectedPokemon.Image}"  ></Image>
+                </Border>
+            </Grid>
         </Border>
     </Grid>
 </UserControl>
