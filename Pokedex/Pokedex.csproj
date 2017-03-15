@@ -93,10 +93,12 @@
       <DependentUpon>PokedexDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\Dictionaries\PokemonTypes.cs" />
+    <Compile Include="Mappers\ModelPokemon2DatabasePokemon.cs" />
     <Compile Include="Services\DataService.cs" />
     <Compile Include="Mappers\DatabasePokemon2ModelPokemon.cs" />
     <Compile Include="Models\Pokemon.cs" />
     <Compile Include="Utils\BindableBase.cs" />
+    <Compile Include="Utils\CustomCommand.cs" />
     <Compile Include="ViewModels\PokemonListViewModel.cs" />
     <Compile Include="Views\PokemonListView.xaml.cs">
       <DependentUpon>PokemonListView.xaml</DependentUpon>

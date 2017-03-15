@@ -63,15 +63,57 @@
                 </ListBox.ItemsPanel>
             </ListBox>
         </Border>
+
+        <Grid Grid.Row="2" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="100*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="100*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="100*"/>
+                <ColumnDefinition Width="20"/>
+
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+
+                <RowDefinition Height="25*"/>
+                <RowDefinition Height="66*"/>
+                <RowDefinition Height="39*"/>
+
+            </Grid.RowDefinitions>
+            <Button  Command="{Binding CreateNewCommand}" Grid.Column="1" Grid.Row="1" Content="CREATE NEW" FontSize="30"></Button>
+            <Button  Command="{Binding UpdateSelectedCommand}" Grid.Column="3" Grid.Row="1" Content="CHANGE" FontSize="30"></Button>
+            <Button  Command="{Binding DeleteSelectedCommand}" Grid.Column="5" Grid.Row="1" Content="DELETE" FontSize="30"></Button>
+        </Grid>
+
         <Border Visibility="{Binding SelectedPokemon, Converter={StaticResource DetailsVisConv}}" Grid.Row="3" Grid.Column="1" BorderBrush="#FF211F1F" BorderThickness="1" CornerRadius="2" >
             <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="65"/>
+                    <RowDefinition Height="65"/>
+                    <RowDefinition Height="65"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="230"></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="300"></ColumnDefinition>
+                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition Width="395*"/>
                 </Grid.ColumnDefinitions>
-                <Border Grid.Column="0" BorderThickness="1" CornerRadius="1"  Margin="0,0,0,0"  Width="200" Height="200" BorderBrush="#FF211F1F">
-                    <Image Source="{Binding SelectedPokemon.Image}"  ></Image>
+                <Border Grid.Column="0" BorderThickness="1" CornerRadius="1"  Margin="15,13" BorderBrush="#FF211F1F" Grid.RowSpan="5">
+                    <Image Source="{Binding SelectedPokemon.Image}"></Image>
                 </Border>
+                <Label Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" Content="Name:" FontSize="35"></Label>
+                <Label Grid.Column="1" Grid.Row="2" Content="Type:" FontSize="35" HorizontalAlignment="Right"></Label>
+                <Label Grid.Column="1" Grid.Row="3" Content="Amount on world:" FontSize="35" HorizontalAlignment="Right"></Label>
+
+                <Label Grid.Column="3" Grid.Row="1" HorizontalAlignment="Left" Content="{Binding SelectedPokemon.Name}" FontSize="35" ></Label>
+                <Label Grid.Column="3" Grid.Row="2" Content="{Binding SelectedPokemon.Type}" FontSize="35" HorizontalAlignment="Left" ></Label>
+                <Label Grid.Column="3" Grid.Row="3" Content="{Binding SelectedPokemon.AmountOnWorld}" FontSize="35" HorizontalAlignment="Left"></Label>
+                <Button Command="{Binding CloseDetailsCommand}" Content="X" Grid.Column="3" HorizontalAlignment="Left" Margin="350,10,0,0" VerticalAlignment="Top" Width="29" Grid.RowSpan="2"/>
             </Grid>
         </Border>
     </Grid>

@@ -19,5 +19,13 @@ namespace Pokedex.Services
 			return modelPokemons;
 		}
 
+		internal static void AddPokemon(Models.Pokemon Pokemon)
+		{
+			PokedexDBEntities context = new PokedexDBEntities();
+			Pokemons dbPokemon = Pokemon.ToDatabasePokemon();
+			context.Pokemons.Add(dbPokemon);
+			context.SaveChanges();
+		}
+
 	}
 }
