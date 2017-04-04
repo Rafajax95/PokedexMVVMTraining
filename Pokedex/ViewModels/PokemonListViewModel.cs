@@ -74,7 +74,6 @@ namespace Pokedex.ViewModels
 		private void CreateNew(object obj)
 		{
 			Pokemon newPok = new Pokemon("Bulba", 100, Data.Dictionaries.PokemonType.Grass, Pokemons[0].Image);
-			//Pokemons.Add(newPok);
 			DataService.AddPokemon(newPok);
 			Refresh();
 		}
@@ -117,19 +116,6 @@ namespace Pokedex.ViewModels
 		{
 			SelectedPokemon = null;
 		}
-
-		//public PokemonListViewModel()
-		//{
-		//	Pokemons = new ObservableCollection<Pokemon>()
-		//	{
-		//		new Pokemon("Pika",100,Data.Dictionaries.PokemonType.Electric,new BitmapImage()),
-		//		new Pokemon("Bulba",102,Data.Dictionaries.PokemonType.Grass,new BitmapImage()),
-		//		new Pokemon("Czarma",123,Data.Dictionaries.PokemonType.Fire,new BitmapImage()),
-		//		new Pokemon("Squirle",54,Data.Dictionaries.PokemonType.Water,new BitmapImage())
-
-		//	};
-		//	LoadCommands();
-		//}
-
+	
 	}
 }
