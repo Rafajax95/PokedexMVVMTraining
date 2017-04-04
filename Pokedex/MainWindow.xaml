@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pokedex"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="1000">
+        Title="MainWindow" Height="650" Width="1000" MinHeight="650" MinWidth="950">
 
     <Frame x:Name="mainFrame" NavigationUIVisibility="Hidden" >
         

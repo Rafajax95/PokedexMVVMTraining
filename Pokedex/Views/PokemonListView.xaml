@@ -31,8 +31,8 @@
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition Height="164"/>
+            <RowDefinition Height="39"/>
+            <RowDefinition Height="180"/>
             <RowDefinition Height="130"/>
             <RowDefinition Height="228"/>
             <RowDefinition/>
@@ -47,6 +47,8 @@
             <ListBox x:Name="pokemonLB"
                      Background="{x:Null}"
                      ScrollViewer.CanContentScroll="False"
+                     ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                     ScrollViewer.HorizontalScrollBarVisibility="Visible"
                      BorderThickness="0"
                      ItemsSource="{Binding Pokemons}"
                      ItemTemplate="{StaticResource pokemonView}"
