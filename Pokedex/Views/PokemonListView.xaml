@@ -85,9 +85,9 @@
                 <RowDefinition/>
 
             </Grid.RowDefinitions>
-            <Button  Command="{Binding CreateNewCommand}" Grid.Column="1" Grid.Row="1" Content="CREATE NEW" FontSize="30"></Button>
-            <Button  Command="{Binding UpdateSelectedCommand}" Grid.Column="3" Grid.Row="1" Content="CHANGE" FontSize="30"></Button>
-            <Button  Command="{Binding DeleteSelectedCommand}" Grid.Column="5" Grid.Row="1" Content="DELETE" FontSize="30"></Button>
+            <Button  Command="{Binding CreateNewCommand}" Grid.Column="1" Grid.Row="1" Content="CREATE NEW" FontSize="30" Style="{DynamicResource DefaultButtonStyle}"></Button>
+            <Button  Command="{Binding UpdateSelectedCommand}" Grid.Column="3" Grid.Row="1" Content="CHANGE" FontSize="30" Style="{DynamicResource DefaultButtonStyle}"></Button>
+            <Button  Command="{Binding DeleteSelectedCommand}" Grid.Column="5" Grid.Row="1" Content="DELETE" FontSize="30" Style="{DynamicResource DefaultButtonStyle}"></Button>
         </Grid>
 
         <Border Visibility="{Binding SelectedPokemon, Converter={StaticResource DetailsVisConv}}" Grid.Row="3" Grid.Column="1" BorderBrush="#FF211F1F" BorderThickness="1" CornerRadius="2" >
@@ -115,7 +115,7 @@
                 <Label Grid.Column="3" Grid.Row="1" HorizontalAlignment="Left" Content="{Binding SelectedPokemon.Name}" FontSize="35" ></Label>
                 <Label Grid.Column="3" Grid.Row="2" Content="{Binding SelectedPokemon.Type}" FontSize="35" HorizontalAlignment="Left" ></Label>
                 <Label Grid.Column="3" Grid.Row="3" Content="{Binding SelectedPokemon.AmountOnWorld}" FontSize="35" HorizontalAlignment="Left"></Label>
-                <Button Command="{Binding CloseDetailsCommand}" Content="X" Grid.Column="3" Margin="0,10,10,0" Grid.RowSpan="2" Height="20" VerticalAlignment="Top" HorizontalAlignment="Right" Width="29"/>
+                <Button Command="{Binding CloseDetailsCommand}" Content="X" Grid.Column="3" Margin="0,10,10,0" Grid.RowSpan="2" Height="20" VerticalAlignment="Top" HorizontalAlignment="Right" Width="29" Style="{DynamicResource DefaultButtonStyle}"/>
             </Grid>
         </Border>
     </Grid>
