@@ -31,11 +31,11 @@
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="3*"/>
+            <RowDefinition/>
             <RowDefinition Height="164"/>
-            <RowDefinition Height="10*"/>
+            <RowDefinition Height="130"/>
             <RowDefinition Height="228"/>
-            <RowDefinition Height="3*"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="30"/>
@@ -68,19 +68,19 @@
             <Grid.ColumnDefinitions>
 
                 <ColumnDefinition Width="20"/>
-                <ColumnDefinition Width="100*"/>
-                <ColumnDefinition Width="20*"/>
-                <ColumnDefinition Width="100*"/>
-                <ColumnDefinition Width="20*"/>
-                <ColumnDefinition Width="100*"/>
+                <ColumnDefinition Width="265"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="265"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="265"/>
                 <ColumnDefinition Width="20"/>
 
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
 
-                <RowDefinition Height="25*"/>
-                <RowDefinition Height="66*"/>
-                <RowDefinition Height="39*"/>
+                <RowDefinition/>
+                <RowDefinition Height="66"/>
+                <RowDefinition/>
 
             </Grid.RowDefinitions>
             <Button  Command="{Binding CreateNewCommand}" Grid.Column="1" Grid.Row="1" Content="CREATE NEW" FontSize="30"></Button>
@@ -89,7 +89,7 @@
         </Grid>
 
         <Border Visibility="{Binding SelectedPokemon, Converter={StaticResource DetailsVisConv}}" Grid.Row="3" Grid.Column="1" BorderBrush="#FF211F1F" BorderThickness="1" CornerRadius="2" >
-            <Grid>
+            <Grid Margin="5,-1,-5,1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="65"/>
@@ -113,7 +113,7 @@
                 <Label Grid.Column="3" Grid.Row="1" HorizontalAlignment="Left" Content="{Binding SelectedPokemon.Name}" FontSize="35" ></Label>
                 <Label Grid.Column="3" Grid.Row="2" Content="{Binding SelectedPokemon.Type}" FontSize="35" HorizontalAlignment="Left" ></Label>
                 <Label Grid.Column="3" Grid.Row="3" Content="{Binding SelectedPokemon.AmountOnWorld}" FontSize="35" HorizontalAlignment="Left"></Label>
-                <Button Command="{Binding CloseDetailsCommand}" Content="X" Grid.Column="3" HorizontalAlignment="Left" Margin="350,10,0,0" VerticalAlignment="Top" Width="29" Grid.RowSpan="2"/>
+                <Button Command="{Binding CloseDetailsCommand}" Content="X" Grid.Column="3" Margin="0,10,10,0" Grid.RowSpan="2" Height="20" VerticalAlignment="Top" HorizontalAlignment="Right" Width="29"/>
             </Grid>
         </Border>
     </Grid>

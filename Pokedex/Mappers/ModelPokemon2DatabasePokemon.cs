@@ -1,6 +1,7 @@
 ﻿using Pokedex.Data.Database;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,19 +11,28 @@ namespace Pokedex.Mappers
 {
 	internal static class ModelPokemon2DatabasePokemon
 	{
-		public static Pokemons ToDatabasePokemon(this Models.Pokemon modelPokemon)
+		public static Pokemons ToDatabasePokemon(this Models.Pokemon modelPokemon, PokemonPictures picture)
 		{
 			return new Pokemons {
 				AmountOnWorld = modelPokemon.AmountOnWorld,
 				Name = modelPokemon.Name,
-				TypeId = (int)modelPokemon.Type
+				TypeId = (int)modelPokemon.Type,
+				PokemonPictures = picture
 			};
 		}
 
-		private static byte[] LoadImage(BitmapImage image)
+		public static byte[] ToByteArray(this BitmapImage image)
 		{
+			byte[] data;
+			JpegBitmapEncoder encoder = new JpegBitmapEncoder();
+			encoder.Frames.Add(BitmapFrame.Create(image));
+			using (MemoryStream ms = new MemoryStream())
+			{
+				encoder.Save(ms);
+				data = ms.ToArray();
+			}
 
-			return new byte[1];
+			return data;
 		}
 	}
 }

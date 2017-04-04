@@ -64,7 +64,6 @@ namespace Pokedex.ViewModels
 			DeleteSelectedCommand = new CustomCommand(DeleteSelected, CanDeleteSelected);
 			UpdateSelectedCommand = new CustomCommand(UpdateSelected, CanUpdateSelected);
 			CreateNewCommand = new CustomCommand(CreateNew, CanCreateNew);
-
 		}
 
 		private bool CanCreateNew(object obj)
@@ -74,7 +73,15 @@ namespace Pokedex.ViewModels
 
 		private void CreateNew(object obj)
 		{
+			Pokemon newPok = new Pokemon("Bulba", 100, Data.Dictionaries.PokemonType.Grass, Pokemons[0].Image);
+			//Pokemons.Add(newPok);
+			DataService.AddPokemon(newPok);
+			Refresh();
+		}
 
+		private void Refresh()
+		{
+			Pokemons = new ObservableCollection<Pokemon>(DataService.GetAllPokemons());
 		}
 
 		private bool CanDeleteSelected(object obj)
@@ -85,7 +92,8 @@ namespace Pokedex.ViewModels
 
 		private void DeleteSelected(object obj)
 		{
-			Pokemons.Remove(SelectedPokemon);
+			DataService.DeletePokemon(SelectedPokemon);
+			Refresh();
 		}
 
 		private bool CanUpdateSelected(object obj)
