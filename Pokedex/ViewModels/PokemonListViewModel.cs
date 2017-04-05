@@ -50,6 +50,7 @@ namespace Pokedex.ViewModels
 		public ICommand DeleteSelectedCommand { get; set; }
 		public ICommand UpdateSelectedCommand { get; set; }
 		public ICommand CreateNewCommand { get; set; }
+		public ICommand RefreshCommand { get; set; }
 
 		public PokemonListViewModel()
 		{
@@ -64,7 +65,10 @@ namespace Pokedex.ViewModels
 			DeleteSelectedCommand = new CustomCommand(DeleteSelected, CanDeleteSelected);
 			UpdateSelectedCommand = new CustomCommand(UpdateSelected, CanUpdateSelected);
 			CreateNewCommand = new CustomCommand(CreateNew, CanCreateNew);
+			RefreshCommand = new CustomCommand(Refresh, CanRefresh);
 		}
+
+
 
 		private bool CanCreateNew(object obj)
 		{
@@ -78,7 +82,12 @@ namespace Pokedex.ViewModels
 			Refresh();
 		}
 
-		private void Refresh()
+		private bool CanRefresh(object obj)
+		{
+			return true;
+		}
+
+		private void Refresh(object obj = null)
 		{
 			Pokemons = new ObservableCollection<Pokemon>(DataService.GetAllPokemons());
 		}
