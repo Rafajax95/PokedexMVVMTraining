@@ -12,6 +12,8 @@ namespace Pokedex.Data.Database
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class PokedexDBEntities : DbContext
     {
@@ -28,5 +30,10 @@ namespace Pokedex.Data.Database
         public virtual DbSet<PokemonPictures> PokemonPictures { get; set; }
         public virtual DbSet<Pokemons> Pokemons { get; set; }
         public virtual DbSet<PokemonTypes> PokemonTypes { get; set; }
+    
+        public virtual int ClearFiles()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ClearFiles");
+        }
     }
 }

@@ -42,6 +42,13 @@ namespace Pokedex.Services
 			context.SaveChanges();
 			context.Dispose();
 			context = null;
+
+			context = new PokedexDBEntities();
+			context.ClearFiles();
+			context.SaveChanges();
+			context.Dispose();
+			context = null;
+
 		}
 	}
 }

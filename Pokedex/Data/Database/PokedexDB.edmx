@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="PokedexDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="PokedexDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="PokemonPictures">
           <Key>
             <PropertyRef Name="InternalId" />
@@ -54,6 +54,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="ClearFiles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="PokedexDBModelStoreContainer">
           <EntitySet Name="PokemonPictures" EntityType="Self.PokemonPictures" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Pokemons" EntityType="Self.Pokemons" Schema="dbo" store:Type="Tables" />
@@ -67,8 +68,7 @@
             <End Role="Pokemons" EntitySet="Pokemons" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PokedexDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -137,6 +137,7 @@
             <End Role="PokemonTypes" EntitySet="PokemonTypes" />
             <End Role="Pokemons" EntitySet="Pokemons" />
           </AssociationSet>
+          <FunctionImport Name="ClearFiles" />
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -172,6 +173,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ClearFiles" FunctionName="PokedexDBModel.Store.ClearFiles" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
