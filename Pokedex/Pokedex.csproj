@@ -69,6 +69,7 @@
     </ApplicationDefinition>
     <Compile Include="Converters\PokemonTypeToColorConverter.cs" />
     <Compile Include="Converters\SelectedPokemonToDetailsVisibilityConverter.cs" />
+    <Compile Include="Converters\ViewModeToAcceptButtonContent.cs" />
     <Compile Include="Data\Database\PokedexDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -100,7 +101,12 @@
     <Compile Include="Models\Pokemon.cs" />
     <Compile Include="Utils\BindableBase.cs" />
     <Compile Include="Utils\CustomCommand.cs" />
+    <Compile Include="Utils\ViewMode.cs" />
+    <Compile Include="ViewModels\PokemonDetailsViewModel.cs" />
     <Compile Include="ViewModels\PokemonListViewModel.cs" />
+    <Compile Include="Views\PokemonDetailsView.xaml.cs">
+      <DependentUpon>PokemonDetailsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PokemonListView.xaml.cs">
       <DependentUpon>PokemonListView.xaml</DependentUpon>
     </Compile>
@@ -116,6 +122,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\PokemonDetailsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\PokemonListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -9,8 +9,9 @@ using System.Windows.Media.Imaging;
 
 namespace Pokedex.Models
 {
-	internal class Pokemon : BindableBase
+	internal class Pokemon : BindableBase, ICloneable
 	{
+		public int id;
 		private string name;
 		private int amountOnWorld;
 		private PokemonType type;
@@ -73,12 +74,18 @@ namespace Pokedex.Models
 		}
 		#endregion
 
-		public Pokemon(string name, int amountOnWorld, PokemonType type, BitmapImage image)
+		public Pokemon(int id, string name, int amountOnWorld, PokemonType type, BitmapImage image)
 		{
+			this.id = id;
 			Name = name;
 			AmountOnWorld = amountOnWorld;
 			Type = type;
 			Image = image;
+		}
+
+		public object Clone()
+		{
+			return this.MemberwiseClone();
 		}
 	}
 

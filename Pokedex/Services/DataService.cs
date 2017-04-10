@@ -32,10 +32,31 @@ namespace Pokedex.Services
 			context = null;
 		}
 
+		internal static void UpdatePokemon(Pokemon Pokemon)
+		{
+			byte[] image = Pokemon.Image.ToByteArray();
+
+			PokedexDBEntities context = new PokedexDBEntities();
+
+			Pokemons dbPokemon = context.Pokemons.FirstOrDefault(x => x.Id == Pokemon.id);
+			PokemonPictures dbPicture = context.PokemonPictures.FirstOrDefault(x => x.InternalId == dbPokemon.ImageId);
+
+			if (dbPicture.Image != image)
+				dbPicture.Image = image;
+
+			Pokemons updatedPokemon = Pokemon.ToDatabasePokemon(dbPicture);
+			updatedPokemon.ImageId = dbPicture.InternalId;
+			context.Entry(dbPokemon).CurrentValues.SetValues(updatedPokemon);
+	
+			context.SaveChanges();
+			context.Dispose();
+			context = null;
+		}
+
 		internal static void DeletePokemon(Pokemon selectedPokemon)
 		{
 			PokedexDBEntities context = new PokedexDBEntities();
-			Pokemons pokToRemove = context.Pokemons.Where(x => x.Name == selectedPokemon.Name).First();
+			Pokemons pokToRemove = context.Pokemons.Where(x => x.Id == selectedPokemon.id).First();
 			context.PokemonPictures.Remove(pokToRemove.PokemonPictures);
 			context.SaveChanges();
 			context.Pokemons.Remove(pokToRemove);

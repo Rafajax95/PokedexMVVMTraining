@@ -91,7 +91,7 @@
         </Grid>
 
         <Border Visibility="{Binding SelectedPokemon, Converter={StaticResource DetailsVisConv}}" Grid.Row="3" Grid.Column="1" BorderBrush="#FF211F1F" BorderThickness="1" CornerRadius="2" >
-            <Grid Margin="5,-1,-5,1">
+            <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="65"/>

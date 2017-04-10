@@ -23,7 +23,7 @@ namespace Pokedex.Mappers
 		public static Models.Pokemon ToModelPokemon(this Data.Database.Pokemons databasePokemon)
 		{
 			BitmapImage image = LoadImage(databasePokemon.PokemonPictures.Image);
-			return new Models.Pokemon(databasePokemon.Name, (int)databasePokemon.AmountOnWorld, (Data.Dictionaries.PokemonType)databasePokemon.TypeId,image);
+			return new Models.Pokemon(databasePokemon.Id, databasePokemon.Name, (int)databasePokemon.AmountOnWorld, (Data.Dictionaries.PokemonType)databasePokemon.TypeId,image);
 		}
 
 		private static BitmapImage LoadImage(byte[] imageData)

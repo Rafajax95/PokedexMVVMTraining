@@ -13,7 +13,8 @@ namespace Pokedex.Mappers
 	{
 		public static Pokemons ToDatabasePokemon(this Models.Pokemon modelPokemon, PokemonPictures picture)
 		{
-			return new Pokemons {
+			return new Pokemons { 
+				Id = modelPokemon.id,
 				AmountOnWorld = modelPokemon.AmountOnWorld,
 				Name = modelPokemon.Name,
 				TypeId = (int)modelPokemon.Type,

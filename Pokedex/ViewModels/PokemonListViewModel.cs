@@ -77,8 +77,8 @@ namespace Pokedex.ViewModels
 
 		private void CreateNew(object obj)
 		{
-			Pokemon newPok = new Pokemon("Bulba", 100, Data.Dictionaries.PokemonType.Grass, Pokemons[0].Image);
-			DataService.AddPokemon(newPok);
+			Views.PokemonDetailsView createNewWindow = new Views.PokemonDetailsView();
+			createNewWindow.ShowDialog();
 			Refresh();
 		}
 
@@ -112,7 +112,9 @@ namespace Pokedex.ViewModels
 
 		private void UpdateSelected(object obj)
 		{
-			
+			Views.PokemonDetailsView udpateWindow = new Views.PokemonDetailsView((Pokemon)selectedPokemon.Clone());
+			udpateWindow.ShowDialog();
+			Refresh();
 		}
 
 		private bool CanCloseDetails(object obj)
