@@ -13,7 +13,8 @@ namespace Pokedex.Mappers
 	{
 		public static Pokemons ToDatabasePokemon(this Models.Pokemon modelPokemon, PokemonPictures picture)
 		{
-			return new Pokemons { 
+			return new Pokemons
+			{
 				Id = modelPokemon.id,
 				AmountOnWorld = modelPokemon.AmountOnWorld,
 				Name = modelPokemon.Name,
@@ -25,15 +26,24 @@ namespace Pokedex.Mappers
 		public static byte[] ToByteArray(this BitmapImage image)
 		{
 			byte[] data;
-			JpegBitmapEncoder encoder = new JpegBitmapEncoder();
-			encoder.Frames.Add(BitmapFrame.Create(image));
-			using (MemoryStream ms = new MemoryStream())
+			try
 			{
-				encoder.Save(ms);
-				data = ms.ToArray();
+				JpegBitmapEncoder encoder = new JpegBitmapEncoder();
+				encoder.Frames.Add(BitmapFrame.Create(image));
+				using (MemoryStream ms = new MemoryStream())
+				{
+					encoder.Save(ms);
+					data = ms.ToArray();
+				}
+
+				return data;
+			}
+			catch
+			{
+				return new byte[0];
 			}
 
-			return data;
+
 		}
 	}
 }

@@ -1,0 +1,55 @@
+﻿<Window x:Class="Pokedex.Views.PokemonDetailsView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Dictionaries="clr-namespace:Pokedex.Data.Dictionaries"
+        xmlns:local="clr-namespace:Pokedex.Views"
+        xmlns:ViewModels="clr-namespace:Pokedex.ViewModels"
+        xmlns:Converters="clr-namespace:Pokedex.Converters"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        Title="PokemonDetailsView" Height="300" Width="600" ResizeMode="NoResize">
+    <Window.Resources>
+        <ObjectDataProvider MethodName="GetValues"
+        ObjectType="{x:Type sys:Enum}"
+        x:Key="PokemonTypes">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="Dictionaries:PokemonType" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <Converters:ViewModeToAcceptButtonContent x:Key="ButtonConv"></Converters:ViewModeToAcceptButtonContent>
+    </Window.Resources>
+    <Window.DataContext>
+        <ViewModels:PokemonDetailsViewModel></ViewModels:PokemonDetailsViewModel>
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="20*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="230"/>
+            <ColumnDefinition Width="210"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="395*"/>
+            <ColumnDefinition Width="5"/>
+        </Grid.ColumnDefinitions>
+        <Border Grid.Column="0" BorderThickness="1" CornerRadius="1"  Margin="15,13" BorderBrush="#FF211F1F" Grid.RowSpan="5">
+            <Button Command="{Binding SetPictureCommand}" Background="White" Style="{StaticResource DefaultButtonStyle}">
+                <Image Margin="5,5,5,5" Source="{Binding Pokemon.Image}" ToolTip="Click to change image." Stretch="Fill"/>
+            </Button>
+        </Border>
+        <Label Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" Content="Name:" FontSize="24" Width="79"/>
+        <Label Grid.Column="1" Grid.Row="2" Content="Type:" FontSize="24" HorizontalAlignment="Right" Width="65"/>
+        <Label Grid.Column="1" Grid.Row="3" Content="Amount on world:" FontSize="24" HorizontalAlignment="Right" Width="201"/>
+
+        <TextBox Grid.Column="3" Grid.Row="1" Text="{Binding Pokemon.Name, Mode=TwoWay}" VerticalContentAlignment="Center" FontSize="15" />
+        <ComboBox Grid.Column="3" Grid.Row="2" SelectedItem="{Binding Pokemon.Type, Mode=TwoWay}" ItemsSource="{Binding Source={StaticResource PokemonTypes}}" VerticalContentAlignment="Center" FontSize="15"/>
+        <TextBox Grid.Column="3" Grid.Row="3" Text="{Binding Pokemon.AmountOnWorld, Mode=TwoWay}" VerticalContentAlignment="Center" FontSize="15"/>
+        <Button Command="{Binding AcceptCommand}" Content="{Binding ViewMode, Converter={StaticResource ButtonConv}}" Grid.Column="3" Margin="20,20,20,20" Grid.Row="4" Style="{StaticResource DefaultButtonStyle}"/>
+    </Grid>
+</Window>
